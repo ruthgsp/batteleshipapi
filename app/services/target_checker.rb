@@ -40,8 +40,26 @@ module TargetChecker
     end
 
     def hit_base?(x,y, opponents_base)
-      if opponents_base[:x].include?(x) && opponents_base[:y].include?(y)
+      base1 = circle_area(0, 0, x, y)
+      base2 = circle_area(1536 , 2048, x, y)
+
+      if base1 || base2
         true 
+      end
+    end
+
+    def circle_area(baseX, baseY, x, y)
+      circle1 = {radius: 40, x: baseX, y: baseY}
+      circle2 = {radius: 40, x: x, y: y}
+
+      dx = circle1[:x] - circle2[:x]
+      dy = circle1[:y] - circle2[:y]
+      distance = Math.sqrt(dx * dx + dy * dy)   
+
+      if (distance < circle1[:radius] + circle2[:radius])
+        true
+      else
+        false
       end
     end
   end
