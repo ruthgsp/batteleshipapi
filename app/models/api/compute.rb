@@ -1,11 +1,12 @@
 module API
   class Compute
-    def initialize(sx, sy, ex, ey, v, time)
+    def initialize(sx, sy, ex, ey, vx, vy, time)
       @sx = sx.to_f
       @sy = sy.to_f
       @ex = ex.to_f
       @ey = ey.to_f
-      @v = v.to_i
+      @vx = vx.to_i
+      @vy = vy.to_i
       @time = time.to_f
     end
 
@@ -35,7 +36,7 @@ module API
     end
 
     def final_x
-      if(velocity_x<0)    
+      if(@vx<0)    
         @sx - final_distance*Math.cos(theta*Math::PI/180)*(180/Math::PI)
       else
         @sx + final_distance*Math.cos(theta*Math::PI/180)*(180/Math::PI)  
@@ -44,7 +45,7 @@ module API
 
     def final_y
 
-      if(velocity_y<0)    
+      if(@vy<0)    
         @sy - final_distance*Math.sin(theta*Math::PI/180)*(180/Math::PI)        
       else 
         @sy + final_distance*Math.sin(theta*Math::PI/180)*(180/Math::PI) 
@@ -59,8 +60,8 @@ module API
       puts "Distance: #{distance}"
       puts "Theta: #{theta}"
       puts "Velocity: #{velocity}"
-      puts "Velociy X: #{velocity_x}"
-      puts "Velociy Y: #{velocity_y}"
+      puts "Velociy X: #{@vx}"
+      puts "Velociy Y: #{@vy}"
       puts "Final Distance: #{final_distance}"
       puts "Final X: #{final_x}"
       puts "Final Y: #{final_y}"

@@ -5,7 +5,7 @@ class Api::WorldsController < ApplicationController
     @game_set = GameSet.find(params[:game_set_id])
     #get coordinates
     # coordinates = {x: 5, y: 5}
-    coordinates = API::Compute.new(params[:x1], params[:y1], params[:x2], params[:y2], params[:velocity], params[:time]).final_coordinates
+    coordinates = API::Compute.new(params[:x1], params[:y1], params[:x2], params[:y2], params[:velocityX], params[:velocityY], params[:time]).final_coordinates
     #check if hit or miss
 
     target = TargetChecker.get_state(coordinates[:x], coordinates[:y], @game_set,  params[:udid])
