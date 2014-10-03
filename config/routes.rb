@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
       collection do
         get :load_game
+        get :active_player
       end
 
       resources :worlds
