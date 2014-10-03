@@ -3,16 +3,20 @@ class Api::GameSetsController < ApplicationController
 
   def load_game
     @game_set = GameSet.last
-    render json: { set_id: @game_set.id, state: @game_set.state, winner: @game_set.winner }
+    if @game_set.present?
+      render json: { set_id: @game_set.id, state: @game_set.state, winner: @game_set.winner }
+    else
+      render json: { success: false, state: "over" }
+    end
   end
 
   def create
     @game_set = GameSet.new(
-        p1_udid: params[:uid],
+        p1_udid: params[:udid],
         state: "waiting"
     )
-
-    if @game_set.save?
+    
+    if @game_set.save
       render json: { success: true, set_id: @game_set.id, state: @game_set.state }
     else
       render json: { success: false, errors_msg: @game_set.errors.message }

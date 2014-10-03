@@ -1,12 +1,12 @@
 module API
   class Compute
     def initialize(sx, sy, ex, ey, v, time)
-      @sx = sx
-      @sy = sy
-      @ex = ex
-      @ey = ey
-      @v = v
-      @time = time
+      @sx = sx.to_f
+      @sy = sy.to_f
+      @ex = ex.to_f
+      @ey = ey.to_f
+      @v = v.to_i
+      @time = time.to_f
     end
 
     def distance
@@ -32,6 +32,10 @@ module API
 
     def final_y
       @sy + final_distance*Math.sin(theta*Math::PI/180)*(180/Math::PI)
+    end
+
+    def final_coordinates
+      {x: final_x, y: final_y}
     end
 
     def all
