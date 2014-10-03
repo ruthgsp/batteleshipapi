@@ -20,7 +20,7 @@ module API
     end
 
     def velocity
-      @v/(Math.cos(theta*Math::PI/180)*(180/Math::PI))
+      @vx/(Math.cos(theta*Math::PI/180)*(180/Math::PI))
     end
 
     def velocity_x
@@ -32,7 +32,7 @@ module API
     end
 
     def final_distance
-      velocity*@time
+      @vx*@time
     end
 
     def final_x
