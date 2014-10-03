@@ -27,6 +27,7 @@ class Api::GameSetsController < ApplicationController
       render json: {success: true, set_id: @game_set.id, state: @game_set.state }
     else
       render json: {success: false }
+    end
   end
 
 end
