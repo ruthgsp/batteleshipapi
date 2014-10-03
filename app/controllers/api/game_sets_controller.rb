@@ -37,7 +37,7 @@ class Api::GameSetsController < ApplicationController
   def active_player
     @game_set = GameSet.find params[:game_set_id]
     @world = @game_set.worlds.last
-    if @world.player.eql?(params[:uid])
+    if @world.player.eql?(params[:udid])
       render json: {success: true, active: false, x: @world.x_coordinate, y: @world.y_coordinate, hit: @world.hit_type}
     else
       render json: {success: true, active: true, x: @world.x_coordinate, y: @world.y_coordinate, hit: @world.hit_type}
