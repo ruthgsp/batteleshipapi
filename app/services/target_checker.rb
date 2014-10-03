@@ -41,7 +41,7 @@ module TargetChecker
 
     def hit_base?(x,y, opponents_base)
       base1 = circle_area(0, 0, x, y)
-      base2 = circle_area(1536 , 2048, x, y)
+      base2 = circle_area(1536/2, 2048/2, x, y)
 
       if base1 || base2
         true 
