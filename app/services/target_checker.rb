@@ -4,7 +4,7 @@ module TargetChecker
   RADIUS = 20
   class << self
     def get_state(x, y, game_set, player)
-      target = nil
+      target = "miss"
       opponents_base = game_set.p1_udid.eql?(player) ? P1_BASE : P2_BASE
       if hit_base?(x, y, opponents_base)
         target = "base"
