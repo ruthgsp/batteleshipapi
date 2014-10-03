@@ -23,11 +23,12 @@ module TargetChecker
       # Circle Area
       circle1 = {radius: RADIUS, x: world.x_coordinate, y: world.y_coordinate}
       circle2 = {radius: RADIUS, x: x, y: y}
-      dx = circle1.x - circle2.x
-      dy = circle1.y - circle2.y
+
+      dx = circle1[:x] - circle2[:x]
+      dy = circle1[:y] - circle2[:y]
       distance = Math.sqrt(dx * dx + dy * dy)
 
-      proximity = true if (distance < circle1.radius + circle2.radius)
+      proximity = true if (distance < circle1[:radius] + circle2[:radius])
 
       if world.present? && (exact || proximity)
         true
@@ -35,8 +36,7 @@ module TargetChecker
     end
 
     def hit_base?(x,y, opponents_base)
-      world = game_set.worlds.last
-      if world.present? && opponents_base[:x].include?(x) && opponents_base[:y].include?(y)
+      if opponents_base[:x].include?(x) && opponents_base[:y].include?(y)
         true 
       end
     end
