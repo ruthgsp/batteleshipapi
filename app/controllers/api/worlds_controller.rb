@@ -1,13 +1,10 @@
 class Api::WorldsController < ApplicationController
 
-
   def create
     @game_set = GameSet.find(params[:game_set_id])
     #get coordinates
-    # coordinates = {x: 5, y: 5}
     coordinates = API::Compute.new(params[:x1], params[:y1], params[:x2], params[:y2], params[:velocityX], params[:velocityY], params[:time]).final_coordinates
     #check if hit or miss
-
     target = TargetChecker.get_state(coordinates[:x], coordinates[:y], @game_set,  params[:udid])
     #update gameset
     @game_set.update_attributes(state: 'over', winner: params[:udid]) if target.eql?("base")
