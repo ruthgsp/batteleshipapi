@@ -1,6 +1,5 @@
 class Api::GameSetsController < ApplicationController
 
-
   def load_game
     @game_set = GameSet.last
     if @game_set.present?
