@@ -36,23 +36,31 @@ module API
     end
 
     def final_x
-      if(@vx<0)    
-        @sx - final_distance*Math.cos(theta*Math::PI/180)*(180/Math::PI)
-      else
-        @sx + final_distance*Math.cos(theta*Math::PI/180)*(180/Math::PI)  
-      end
+      final_distance*Math.cos(theta*Math::PI/180)*(180/Math::PI)
     end
 
     def final_y
-      if(@vy<0)    
-        @sy - final_distance*Math.sin(theta*Math::PI/180)*(180/Math::PI)        
-      else 
-        @sy + final_distance*Math.sin(theta*Math::PI/180)*(180/Math::PI) 
+      final_distance*Math.sin(theta*Math::PI/180)*(180/Math::PI)        
+    end
+
+    def x
+      if (@sx < 0)
+        (@sx - final_x).abs
+      else
+        (@sx + final_x).abs
       end
     end
 
+    def y
+      if (@sy < 0)
+        (@sy - final_y).abs
+      else
+        (@sy + final_y).abs
+      end      
+    end
+
     def final_coordinates
-      {x: final_x, y: final_y}
+      {x: x, y: y}
     end
 
     def all
@@ -64,6 +72,19 @@ module API
       puts "Final Distance: #{final_distance}"
       puts "Final X: #{final_x}"
       puts "Final Y: #{final_y}"
+      puts "X: #{x}"
+      puts "Y: #{y}"
+      # API::Compute.new(752.5, 976.5, 594, 844.5, -2368.45, -1670.883, 0.086).all
+      # {
+      #     time = "0.086";
+      #     udid = "35367CD1-91AB-4BCC-AA2B-8A778EA97B5E";
+      #     velocityX = "-2368.45";
+      #     velocityY = "-1670.883";
+      #     x1 = "752.5";
+      #     x2 = 594;
+      #     y1 = "976.5";
+      #     y2 = "844.5";
+      # }      
     end
   end
 end
