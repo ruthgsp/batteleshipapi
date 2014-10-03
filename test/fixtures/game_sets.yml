@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  p1_uid: MyString
+  p2_uid: MyString
+  state: MyString
+  winner: MyString
+
+two:
+  p1_uid: MyString
+  p2_uid: MyString
+  state: MyString
+  winner: MyString
