@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141003085139) do
+ActiveRecord::Schema.define(version: 20141003094740) do
 
   create_table "game_sets", force: true do |t|
     t.string   "p1_udid"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20141003085139) do
     t.string   "player"
     t.integer  "x_coordinate"
     t.integer  "y_coordinate"
-    t.string   "state"
+    t.string   "hit_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
