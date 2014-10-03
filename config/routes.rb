@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
       collection do
         get :load_game
+        get :get_coordinates
       end
 
       member do
@@ -69,4 +70,5 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  root 'home#poll'
 end

@@ -1,0 +1,32 @@
+.main{
+    height: 2000px;
+    width: 2500px;
+}
+
+.gameArea {
+    height: 2048px;
+    width: 1536px;
+    background: url("background-lighter-base.png") no-repeat;
+    display: inline-block;
+    z-index: 0;
+}
+.player1{
+    height: 2048px;
+    width: 1536px;
+    top: 80px;
+    bottom: 0;
+    position: absolute;
+    background: url("player1.png") no-repeat 10px 10px;
+    z-index: 10;
+
+}
+.player2{
+    height: 2048px;
+    width: 1536px;
+    top: 80px;
+    bottom: 0;
+    position: absolute;
+    background: url("player2.png") no-repeat 60px 30px;
+    z-index: 999;
+
+}

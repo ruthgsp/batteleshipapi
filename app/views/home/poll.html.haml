@@ -1,0 +1,35 @@
+%h1 Poll
+- if @game_set.state != "active"
+  .main
+    %img{src: asset_path("waiting.png")}
+- else
+  .main
+    .gameArea
+    .player1
+    .player2
+
+:javascript
+
+  $(document).ready(function(e) {
+    setInterval(function(){
+        console.log("test");
+        $.ajax({
+          type:'GET',
+          url:'/api/game_sets/get_coordinates',
+          dataType:'json',
+          success:function(data){
+              x1 = data["x1"];
+              x2 = data["x2"];
+              y1 = data["y1"];
+              y2 = data["y2"];
+              if (x1 != undefined){
+                $(".player1").css("background-position", x1 + "px" + " " + y1 + "px");
+                $(".player2").css("background-position", x2 + "px" + " " + y2 + "px");
+              }
+          }
+      })
+    }, 1000);
+  });
+
+
+

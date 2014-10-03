@@ -51,4 +51,15 @@ class Api::GameSetsController < ApplicationController
     end
   end
 
+  def get_coordinates
+    @game_set = GameSet.last
+    if @game_set
+      p1 = @game_set.worlds.where(player: @game_set.p1_udid).last
+      p2 = @game_set.worlds.where(player: @game_set.p2_udid).last
+      render json: {x1: p1.x_coordinate, x2: p2.x_coordinate, y1: p1.y_coordinate, y2: p2.y_coordinate}
+    else
+      render json: {success: false }
+    end
+  end
+
 end
