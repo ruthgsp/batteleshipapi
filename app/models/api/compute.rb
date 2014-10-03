@@ -5,8 +5,8 @@ module API
       @sy = sy.to_f
       @ex = ex.to_f
       @ey = ey.to_f
-      @vx = vx.to_i
-      @vy = vy.to_i
+      @vx = vx.to_f
+      @vy = vy.to_f
       @time = time.to_f
     end
 
@@ -44,7 +44,6 @@ module API
     end
 
     def final_y
-
       if(@vy<0)    
         @sy - final_distance*Math.sin(theta*Math::PI/180)*(180/Math::PI)        
       else 
