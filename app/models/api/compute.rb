@@ -22,16 +22,33 @@ module API
       @v/(Math.cos(theta*Math::PI/180)*(180/Math::PI))
     end
 
+    def velocity_x
+      velocity*Math.cos(theta*Math::PI/180)*(180/Math::PI)
+    end
+
+    def velocity_y
+      velocity*Math.sin(theta*Math::PI/180)*(180/Math::PI)
+    end
+
     def final_distance
       velocity*@time
     end
 
     def final_x
-      @sx + final_distance*Math.cos(theta*Math::PI/180)*(180/Math::PI)
+      if(velocity_x<0)    
+        @sx - final_distance*Math.cos(theta*Math::PI/180)*(180/Math::PI)
+      else
+        @sx + final_distance*Math.cos(theta*Math::PI/180)*(180/Math::PI)  
+      end
     end
 
     def final_y
-      @sy + final_distance*Math.sin(theta*Math::PI/180)*(180/Math::PI)
+
+      if(velocity_y<0)    
+        @sy - final_distance*Math.sin(theta*Math::PI/180)*(180/Math::PI)        
+      else 
+        @sy + final_distance*Math.sin(theta*Math::PI/180)*(180/Math::PI) 
+      end
     end
 
     def final_coordinates
@@ -42,6 +59,8 @@ module API
       puts "Distance: #{distance}"
       puts "Theta: #{theta}"
       puts "Velocity: #{velocity}"
+      puts "Velociy X: #{velocity_x}"
+      puts "Velociy Y: #{velocity_y}"
       puts "Final Distance: #{final_distance}"
       puts "Final X: #{final_x}"
       puts "Final Y: #{final_y}"

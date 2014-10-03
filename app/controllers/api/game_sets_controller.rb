@@ -35,7 +35,7 @@ class Api::GameSetsController < ApplicationController
   end
 
   def active_player
-    @game_set = GameSet.find params[:game_set_id]
+    @game_set = GameSet.find params[:id]
     @world = @game_set.worlds.last
     if @world.present?
       if @world.player.eql?(params[:udid])

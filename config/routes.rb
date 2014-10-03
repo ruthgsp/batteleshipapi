@@ -5,6 +5,9 @@ Rails.application.routes.draw do
 
       collection do
         get :load_game
+      end
+
+      member do
         get :active_player
       end
 
